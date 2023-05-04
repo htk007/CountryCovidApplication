@@ -20,11 +20,11 @@ import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> implements Filterable {
 
-    private ArrayList<Country> countryList;
-    private ArrayList<Country> filteredList;
+    private List<Country> countryList;
+    private List<Country> filteredList;
     private Context context;
 
-    public CountryAdapter(ArrayList<Country> countryList, Context context) {
+    public CountryAdapter(List<Country> countryList, Context context) {
         this.countryList = countryList;
         this.filteredList = countryList;
         this.context = context;
@@ -49,12 +49,9 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        if (countryList == null) {
-            return 0;
-        } else {
-            return countryList.size();
-        }
+        return filteredList == null ? 0 : filteredList.size();
     }
+
 
     @Override
     public Filter getFilter() {

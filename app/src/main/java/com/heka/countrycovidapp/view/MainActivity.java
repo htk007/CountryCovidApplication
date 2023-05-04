@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private ApiService apiService;
     private RecyclerView recyclerView;
     private CountryAdapter adapter;
-    private ArrayList<Country> countryList;
+
     EditText searchEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     List<Country> countries = summaryResponse.getCountryList();
                     ArrayList<Country> tempList = new ArrayList<>();
                     tempList.addAll(countries);
-                    countryList = tempList;
-                    setupRecycleView(countryList);
-                    adapter.updateRecyclerView(countryList);
-                    Log.d("MainActivity","countryList size: " + countryList.size());
+                    setupRecycleView(countries);
+                   // adapter.updateRecyclerView(countries);
+                    Log.d("HEKALOG","countries size: " + countries.size() );
                     for(Country c: countries){
                         Log.d("MainActivity", "Country: " + c.getCountryName() +" data: " +  c.getNewDeaths());
                     }
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setupRecycleView(ArrayList<Country> cList){
+    private void setupRecycleView(List<Country> cList){
         recyclerView = findViewById(R.id.recyclerView);
         adapter = new CountryAdapter( cList, this);
         recyclerView.setAdapter(adapter);
