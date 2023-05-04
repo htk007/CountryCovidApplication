@@ -1,8 +1,13 @@
 package com.heka.countrycovidapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Country {
+public class Country implements Parcelable {
     @SerializedName("Country")
     private String countryName;
     @SerializedName("CountryCode")
@@ -23,6 +28,18 @@ public class Country {
     private int totalRecovered;
     @SerializedName("Date")
     private String date;
+
+    public static final Creator<Country> CREATOR = new Creator<Country>() {
+        @Override
+        public Country createFromParcel(Parcel in) {
+            return new Country(in);
+        }
+
+        @Override
+        public Country[] newArray(int size) {
+            return new Country[size];
+        }
+    };
 
     public String getCountryName() {
         return countryName;
@@ -63,4 +80,27 @@ public class Country {
     public String getDate() {
         return date;
     }
+
+    protected Country(Parcel in) {
+        countryName = in.readString();
+        totalConfirmed = in.readInt();
+        totalDeaths = in.readInt();
+        totalRecovered = in.readInt();
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(countryName);
+        dest.writeInt(totalConfirmed);
+        dest.writeInt(totalDeaths);
+        dest.writeInt(totalRecovered);
+    }
+
+
 }

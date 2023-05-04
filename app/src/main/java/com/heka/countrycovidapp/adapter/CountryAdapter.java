@@ -1,6 +1,8 @@
 package com.heka.countrycovidapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.heka.countrycovidapp.R;
 import com.heka.countrycovidapp.model.Country;
+import com.heka.countrycovidapp.view.CountryDetailActivity;
 import com.heka.countrycovidapp.view.MainActivity;
 
 import java.util.ArrayList;
@@ -45,6 +48,15 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         holder.totalCasesTextView.setText(String.valueOf(country.getTotalConfirmed()));
         holder.totalDeathsTextView.setText(String.valueOf(country.getTotalDeaths()));
         holder.totalRecoveredTextView.setText(String.valueOf(country.getTotalRecovered()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CountryDetailActivity.class);
+                Log.d("HKLOG", "seçilen country:   "+ country.getCountryName());
+                intent.putExtra("selectedCountry", country.getCountryName());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
