@@ -2,6 +2,7 @@ package com.heka.countrycovidapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +53,7 @@ public class CovidDataAdapter  extends RecyclerView.Adapter<CovidDataAdapter.Vie
                 Intent intent = new Intent(context, CountryDetailActivity.class);
                 Log.d("HKLOG", "seçilen country:   "+ country.getCountry());
                 intent.putExtra("selectedCountry", country.getCountry());
+                intent.putExtra("selectedCountryData", country);
                 context.startActivity(intent);
             }
         });

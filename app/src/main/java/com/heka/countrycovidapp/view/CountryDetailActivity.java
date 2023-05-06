@@ -4,17 +4,22 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.heka.countrycovidapp.R;
 import com.heka.countrycovidapp.model.Country;
+import com.heka.countrycovidapp.model.CovidData;
 
 
 public class CountryDetailActivity extends AppCompatActivity {
 
     private TextView countryNameTextView;
+    private TextView totalConfirmedTextView;
+    private TextView totalDeathsTextView;
+    private TextView totalRecoveredTextView;
     private Country country;
 
     @Override
@@ -24,6 +29,9 @@ public class CountryDetailActivity extends AppCompatActivity {
 
         // XML dosyasında bulunan viewleri initialize ediyoruz
         countryNameTextView = findViewById(R.id.countryNameTextView);
+        totalConfirmedTextView = findViewById(R.id.totalConfirmedTextViewD);
+        totalDeathsTextView = findViewById(R.id.totalDeathsTextViewD);
+        totalRecoveredTextView = findViewById(R.id.totalRecoveredTextViewD);
 
         // MainActivity'den seçili ülkeyi alıyoruz
      //   country = getIntent().getParcelableExtra("selectedCountry");
@@ -31,13 +39,19 @@ public class CountryDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             String selectedCountry = intent.getStringExtra("selectedCountry");
-            // Yapmak istediğiniz işlemleri burada yapabilirsiniz
-            // Örneğin, seçilen ülkeyi bir TextView'e yerleştirebilirsiniz
+
+            CovidData selectedCountryData = getIntent().getParcelableExtra("selectedCountryData");
+
             countryNameTextView.setText(selectedCountry);
+            Log.d("HKLOG",":: " +selectedCountryData.toString());
+            countryNameTextView.setText("Country Name: "+selectedCountryData.getCountry());
+            totalConfirmedTextView.setText("Total Confirmed: "+selectedCountryData.getTotalConfirmed());
+            totalDeathsTextView.setText("Total Deaths: "+selectedCountryData.getTotalDeaths());
+            totalRecoveredTextView.setText("Total Recovered: " +selectedCountryData.getTotalRecovered());
+
         }
 
         if(country != null){
-            // Ülke adını textview'a set ediyoruz
             countryNameTextView.setText(country.getCountryName());
         }else{
             Toast.makeText(this, "country boş: "+ country, Toast.LENGTH_SHORT).show();
