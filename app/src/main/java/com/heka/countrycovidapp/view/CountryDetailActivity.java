@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.heka.countrycovidapp.R;
+import com.heka.countrycovidapp.adapter.CovidDataPagerAdapter;
 import com.heka.countrycovidapp.model.Country;
 import com.heka.countrycovidapp.model.CovidData;
 
@@ -21,17 +22,26 @@ public class CountryDetailActivity extends AppCompatActivity {
     private TextView totalDeathsTextView;
     private TextView totalRecoveredTextView;
     private Country country;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_country_detail);
+        setContentView(R.layout.activity_covid_detail);
 
         // XML dosyasında bulunan viewleri initialize ediyoruz
         countryNameTextView = findViewById(R.id.countryNameTextView);
-        totalConfirmedTextView = findViewById(R.id.totalConfirmedTextViewD);
+       /* totalConfirmedTextView = findViewById(R.id.totalConfirmedTextViewD);
         totalDeathsTextView = findViewById(R.id.totalDeathsTextViewD);
-        totalRecoveredTextView = findViewById(R.id.totalRecoveredTextViewD);
+        totalRecoveredTextView = findViewById(R.id.totalRecoveredTextViewD);*/
+
+        viewPager = findViewById(R.id.viewPagerCovidData);
+        viewPager.setAdapter(new CovidDataPagerAdapter(getSupportFragmentManager()));
+
+        // Instantiate a TabLayout.
+        tabLayout = findViewById(R.id.tabLayoutCovidData);
+        tabLayout.setupWithViewPager(viewPager);
 
         // MainActivity'den seçili ülkeyi alıyoruz
      //   country = getIntent().getParcelableExtra("selectedCountry");
@@ -43,12 +53,12 @@ public class CountryDetailActivity extends AppCompatActivity {
             CovidData selectedCountryData = getIntent().getParcelableExtra("selectedCountryData");
 
             countryNameTextView.setText(selectedCountry);
-            Log.d("HKLOG",":: " +selectedCountryData.toString());
+           /* Log.d("HKLOG",":: " +selectedCountryData.toString());
             countryNameTextView.setText("Country Name: "+selectedCountryData.getCountry());
             totalConfirmedTextView.setText("Total Confirmed: "+selectedCountryData.getTotalConfirmed());
             totalDeathsTextView.setText("Total Deaths: "+selectedCountryData.getTotalDeaths());
             totalRecoveredTextView.setText("Total Recovered: " +selectedCountryData.getTotalRecovered());
-
+*/
         }
 
         if(country != null){
