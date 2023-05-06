@@ -32,12 +32,14 @@ public class CountryDetailActivity extends AppCompatActivity {
 
         // XML dosyasında bulunan viewleri initialize ediyoruz
         countryNameTextView = findViewById(R.id.countryNameTextView);
-       /* totalConfirmedTextView = findViewById(R.id.totalConfirmedTextViewD);
+       /*
+        totalConfirmedTextView = findViewById(R.id.totalConfirmedTextViewD);
         totalDeathsTextView = findViewById(R.id.totalDeathsTextViewD);
-        totalRecoveredTextView = findViewById(R.id.totalRecoveredTextViewD);*/
+        totalRecoveredTextView = findViewById(R.id.totalRecoveredTextViewD);
+        */
 
         viewPager = findViewById(R.id.viewPagerCovidData);
-        viewPager.setAdapter(new CovidDataPagerAdapter(getSupportFragmentManager()));
+
 
         // Instantiate a TabLayout.
         tabLayout = findViewById(R.id.tabLayoutCovidData);
@@ -51,7 +53,7 @@ public class CountryDetailActivity extends AppCompatActivity {
             String selectedCountry = intent.getStringExtra("selectedCountry");
 
             CovidData selectedCountryData = getIntent().getParcelableExtra("selectedCountryData");
-
+            viewPager.setAdapter(new CovidDataPagerAdapter(getSupportFragmentManager(), selectedCountryData));
             countryNameTextView.setText(selectedCountry);
            /* Log.d("HKLOG",":: " +selectedCountryData.toString());
             countryNameTextView.setText("Country Name: "+selectedCountryData.getCountry());

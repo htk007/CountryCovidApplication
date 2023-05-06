@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.heka.countrycovidapp.model.CovidData;
 import com.heka.countrycovidapp.util.Constants;
 import com.heka.countrycovidapp.view.DetailDataFragment;
 import com.heka.countrycovidapp.view.MapDataFragment;
@@ -13,9 +14,11 @@ import com.heka.countrycovidapp.view.MapDataFragment;
 public class CovidDataPagerAdapter  extends FragmentPagerAdapter {
 
     private static final int NUM_PAGES = Constants.TOTAL_FRAGMENT_PAGES;
+    private CovidData covidData;
 
-    public CovidDataPagerAdapter(@NonNull FragmentManager fm) {
+    public CovidDataPagerAdapter(@NonNull FragmentManager fm, CovidData covidData) {
         super(fm);
+        this.covidData = covidData;
     }
 
     @NonNull
@@ -23,7 +26,7 @@ public class CovidDataPagerAdapter  extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new DetailDataFragment();
+                return DetailDataFragment.newInstance(covidData);
             case 1:
                 return new MapDataFragment();
            /* case 2:
