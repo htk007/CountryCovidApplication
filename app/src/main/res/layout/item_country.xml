@@ -3,72 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@drawable/rounded_background"
+    android:padding="16dp"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/countryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/totalCasesLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Cases: "
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/grey"/>
 
         <TextView
             android:id="@+id/totalCasesTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/totalDeathsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Deaths: "
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/grey"/>
 
         <TextView
             android:id="@+id/totalDeathsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/totalRecoveredLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Recovered: "
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/grey"/>
 
         <TextView
             android:id="@+id/totalRecoveredTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
