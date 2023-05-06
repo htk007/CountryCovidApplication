@@ -2,6 +2,7 @@ package com.heka.countrycovidapp.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,15 @@ public class CountryDetailActivity extends AppCompatActivity {
         countryNameTextView = findViewById(R.id.countryNameTextView);
 
         // MainActivity'den seçili ülkeyi alıyoruz
-        country = getIntent().getParcelableExtra("selectedCountry");
+     //   country = getIntent().getParcelableExtra("selectedCountry");
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String selectedCountry = intent.getStringExtra("selectedCountry");
+            // Yapmak istediğiniz işlemleri burada yapabilirsiniz
+            // Örneğin, seçilen ülkeyi bir TextView'e yerleştirebilirsiniz
+            countryNameTextView.setText(selectedCountry);
+        }
 
         if(country != null){
             // Ülke adını textview'a set ediyoruz
