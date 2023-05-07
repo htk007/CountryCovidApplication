@@ -13,6 +13,7 @@ import com.heka.countrycovidapp.R;
 import com.heka.countrycovidapp.adapter.CovidDataPagerAdapter;
 import com.heka.countrycovidapp.model.Country;
 import com.heka.countrycovidapp.model.CovidData;
+import com.heka.countrycovidapp.util.Constants;
 
 
 public class CountryDetailActivity extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class CountryDetailActivity extends AppCompatActivity {
         if (intent != null) {
             String selectedCountry = intent.getStringExtra("selectedCountry");
 
-            CovidData selectedCountryData = getIntent().getParcelableExtra("selectedCountryData");
+            CovidData selectedCountryData = getIntent().getParcelableExtra(Constants.INTENT_KEY_SELECTED_COUNTRY_DATA);
             viewPager.setAdapter(new CovidDataPagerAdapter(getSupportFragmentManager(), selectedCountryData));
             countryNameTextView.setText(selectedCountry);
         }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.heka.countrycovidapp.R;
 import com.heka.countrycovidapp.model.Country;
 import com.heka.countrycovidapp.model.CovidData;
+import com.heka.countrycovidapp.util.Constants;
 
 public class DetailDataFragment extends Fragment {
 
@@ -23,7 +24,7 @@ public class DetailDataFragment extends Fragment {
     public static DetailDataFragment newInstance(CovidData covidData) {
         DetailDataFragment fragment = new DetailDataFragment();
         Bundle args = new Bundle();
-        args.putParcelable("covidData", covidData);
+        args.putParcelable(Constants.PARCELABLE_KEY_NAME_COVID_DATA, covidData);
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,7 +33,7 @@ public class DetailDataFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            covidData = getArguments().getParcelable("covidData");
+            covidData = getArguments().getParcelable(Constants.PARCELABLE_KEY_NAME_COVID_DATA);
         }
     }
 

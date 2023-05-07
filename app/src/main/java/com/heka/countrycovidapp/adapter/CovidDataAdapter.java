@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.heka.countrycovidapp.R;
 import com.heka.countrycovidapp.model.Country;
 import com.heka.countrycovidapp.model.CovidData;
+import com.heka.countrycovidapp.util.Constants;
 import com.heka.countrycovidapp.view.CountryDetailActivity;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class CovidDataAdapter  extends RecyclerView.Adapter<CovidDataAdapter.Vie
                 Intent intent = new Intent(context, CountryDetailActivity.class);
                 Log.d("HKLOG", "seçilen country:   "+ country.getCountry());
                 intent.putExtra("selectedCountry", country.getCountry());
-                intent.putExtra("selectedCountryData", country);
+                intent.putExtra(Constants.INTENT_KEY_SELECTED_COUNTRY_DATA, country);
                 context.startActivity(intent);
             }
         });

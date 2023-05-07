@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupRetrofit(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.covid19api.com/")
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
