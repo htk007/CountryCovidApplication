@@ -2,17 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/mapText"
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="MAP SHOULD BE HERE"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textColor="#000000"
-        android:textStyle="bold" />
-
-
-
+        android:layout_height="match_parent" />
 </LinearLayout>

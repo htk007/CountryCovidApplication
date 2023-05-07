@@ -6,24 +6,27 @@
 
     <include layout="@layout/toolbar_layout"/>
 
+    <!-- Tab Layout -->
     <TextView
         android:id="@+id/countryNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
+        android:textSize="28sp"
         android:text="countryName"
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="#000000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-condensed" />
 
-    <!-- Tab Layout -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutCovidData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="#7C7B7B"
         app:tabGravity="fill"
+        app:tabTextColor="@color/white"
         app:tabMode="fixed" />
 
     <!-- View Pager -->

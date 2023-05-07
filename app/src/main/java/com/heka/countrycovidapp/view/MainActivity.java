@@ -43,16 +43,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.recyclerView);
+        initViews();
         setupView();
+        setupRetrofit();
+        manageFetchCovidDataSource(Constants.API_SOURCE_MODE_ALTERNATIVE);
+       //getCovidList();
+    }
+
+    private void initViews(){
+        recyclerView = findViewById(R.id.recyclerView);
+    }
+
+    private void setupRetrofit(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.covid19api.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         apiService = retrofit.create(ApiService.class);
+    }
 
-       getCovidList();
+    private void manageFetchCovidDataSource(int sourceType){
+        switch (sourceType){
+            case Constants.API_SOURCE_MODE_MAIN:
+                DATA_SOURCE_MODE = Constants.API_SOURCE_MODE_MAIN;
+                getCovidList();
+                break;
+            case Constants.API_SOURCE_MODE_ALTERNATIVE:
+                DATA_SOURCE_MODE = Constants.API_SOURCE_MODE_ALTERNATIVE;
+                fetchAlternativeCovidData();
+                break;
+        }
     }
 
     private void getCovidList() {
@@ -153,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<CovidData>> call, Throwable t) {
                 // API isteği başarısız oldu
-                // THata durumunu işle
+                // Hata durumunu işle
             }
         });
 

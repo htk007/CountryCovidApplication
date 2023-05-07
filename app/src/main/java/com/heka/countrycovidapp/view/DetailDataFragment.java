@@ -34,13 +34,11 @@ public class DetailDataFragment extends Fragment {
         if (getArguments() != null) {
             covidData = getArguments().getParcelable("covidData");
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
        View rootView = inflater.inflate(R.layout.detail_data_fragment, container, false);
 
         totalConfirmedTextView = rootView.findViewById(R.id.totalConfirmedTextViewD);
@@ -50,7 +48,6 @@ public class DetailDataFragment extends Fragment {
         totalConfirmedTextView.setText("Total Confirmed: "+covidData.getTotalConfirmed());
         totalDeathsTextView.setText("Total Deaths: "+covidData.getTotalDeaths());
         totalRecoveredTextView.setText("Total Recovered: " +covidData.getTotalRecovered());
-
 
         return rootView;
     }

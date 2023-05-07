@@ -28,7 +28,7 @@ public class CovidDataPagerAdapter  extends FragmentPagerAdapter {
             case 0:
                 return DetailDataFragment.newInstance(covidData);
             case 1:
-                return new MapDataFragment();
+                return MapDataFragment.newInstance(covidData);
            /* case 2:
                 return new ThirdFragment();*/
             default:
